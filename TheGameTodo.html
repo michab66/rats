@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="StarOffice/5.0 (WinNT/Win95)">
+	<META NAME="AUTHOR" CONTENT="Michael Binz">
+	<META NAME="CREATED" CONTENT="19990328;14085239">
+	<META NAME="CHANGEDBY" CONTENT="Michael Binz">
+	<META NAME="CHANGED" CONTENT="19990328;14085239">
+</HEAD>
+<BODY>
+<H1>Ratgame TODO</H1>
+<UL>
+	<LI><P>Does not work with InternetExplorer because the number of
+	images created exceeds some MS class library defined limit.  This
+	results in a 'SecurityException: Too many images' thrown.  Since the
+	Java console is normally neither visible nor active in a normal IE
+	setup this looks like a silent fail.  No workaround at the moment
+	exists,  we have to reduce the number of images created which is not
+	that easy.</P>
+	<LI><P>On Java 2 (formerly Java 1.2):  Either we have some problem
+	with the CropImageFilter or Sun has.  The problem is that the
+	Picture strips are not cropped as expected, but sometimes we get a
+	set of cropped images where every image contains the first picture. 
+	At the moment this is fixed in
+	PictureStrip.java#initFromVerticalImage, where the crop size is
+	reduced by one pixel, which leads to small display errors, but works
+	on MS and Sun appletviewers.  The initFromHorizontalImage method is
+	not touched and should contain just the same problem.</P>
+	<LI><P>A number of deprecated warnings arise when compiling this
+	thing.  Remove as much as possible without compromising Java 1.0
+	compatibility...</P>
+	<LI><P>After having a look into the code I have the impression, that
+	this needs a general rework for better reusability.  Too many
+	classes need to be subclassed to get something working.  We also
+	need to think about the current animation mode &#150; box based
+	image animation &#150; maybe some coordinate based scheme with
+	movement vectors would be better and more universally and better
+	suite for the poor soul bein responsible creating the game
+	graphics...</P>
+</UL>
+</BODY>
+</HTML>
